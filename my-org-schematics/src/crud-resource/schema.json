@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "HelloSchema",
+  "title": "Hello Schema",
+  "type": "object",
+  "description": "Say hello to someone",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the service",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "url": {
+      "type": "string",
+      "x-prompt": "What's the resource url (eg: /api/employees)?"
+    },
+    "findOne": {
+      "type": "boolean",
+      "default": false
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path at which to create the class, relative to the workspace root.",
+      "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    }
+  },
+  "required": ["name"]
+}
